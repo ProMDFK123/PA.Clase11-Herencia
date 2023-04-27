@@ -1,0 +1,62 @@
+@startuml
+left to right direction
+skin rose
+
+Class Persona{
+    -id: String
+    -nombre: String
+    -apellido: String
+    -edad: int
+    +Persona(id: String, nombre: String, apellido:String, edad: int)
+    +get's()
+}
+
+Class Futbolista{
+    -demarcacion: String
+    +Futbolista(id: String, nombre: String, apellido:String, edad: int, demarcacion: String)
+    +getDemarcacion(): String
+}
+
+Class Entrenador{
+    -idFederacion: String
+    +Entrenador(id: String, nombre: String, apellido:String, edad: int, idFederacion: String)
+    +getIdFederacion(): String
+}
+
+Class Masajista{
+    -titulo: String
+    -aniosExperiencia: int
+    +Masajista(id: String, nombre: String, apellido:String, edad: int, titulo: String, aniosExperiencia: int)
+    +get's()
+}
+
+Persona ^-- Futbolista
+Persona ^-- Entrenador
+Persona ^-- Masajista
+
+Class EquipoFutbol{
+   -nombre: String
+   -cantidadActual: int
+   -cantMax: int
+   -listaPersona: Persona[]
+   +EquipoFutbol(cantMax: int)
+   +getCantidadActual(): int
+   +getNombre(): String
+   +getCantMax(): int
+   +AgregarPersona(): void
+}
+
+EquipoFutbol*--"1..*"Persona
+
+interface Sistema{
+    +AgregarEquipo(): void
+}
+
+Class SistemaImpl{
+    -listaEquipos: EquipoFutbol
+    +SistemaImpl()
+    +menu()
+}
+
+SistemaImpl..^Sistema
+@enduml

@@ -1,0 +1,32 @@
+@startuml
+package ejercicios{
+    package modulos{
+        Entity modulo{}
+    }
+    Class Main{}
+    package herencia{
+        Entity DC{}
+        Class Persona{}
+        Class Entrenador{}
+        Class Futbolista{}
+        Class Masajista{}
+        Class EquipoFutbol{}
+        interface Sistema{}
+        Class SistemaImpl{}
+    }
+}
+
+package teoria{
+Class Modulos{}
+Class Herencia{}
+}
+
+Modulos-->modulo
+Persona ^..Masajista
+Persona ^..Futbolista
+Persona ^..Entrenador
+
+Sistema ^-- SistemaImpl
+
+EquipoFutbol*--"1..*"Persona
+@enduml
